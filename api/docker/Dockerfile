@@ -25,4 +25,4 @@ VOLUME ["/hygieia/logs"]
 
 EXPOSE 8080
 CMD ./properties-builder.sh &&\
-  java -Djava.security.egd=file:/dev/./urandom -jar api.jar --spring.config.location=/hygieia/dashboard.properties
+  java -Djava.security.egd=file:/dev/./urandom -Xms64m -Xmx250m -jar api.jar --spring.config.location=/hygieia/dashboard.properties

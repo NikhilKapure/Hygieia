@@ -14,5 +14,4 @@ WORKDIR /hygieia
 VOLUME ["/hygieia/logs"]
 
 CMD ./github-properties-builder.sh && \
-  java -jar github-scm-collector*.jar --spring.config.location=/hygieia/hygieia-github-scm-collector.properties
-
+  java -Xms64m -Xmx150m -jar github-scm-collector*.jar --spring.config.location=/hygieia/hygieia-github-scm-collector.properties

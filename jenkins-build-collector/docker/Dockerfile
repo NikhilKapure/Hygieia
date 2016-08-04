@@ -14,5 +14,4 @@ WORKDIR /hygieia
 VOLUME ["/hygieia/logs"]
 
 CMD ./jenkins-build-properties-builder.sh && \
-  java -jar jenkins-build-collector*.jar --spring.config.location=/hygieia/hygieia-jenkins-build-collector.properties
-
+  java -Xms64m -Xmx150m -jar jenkins-build-collector*.jar --spring.config.location=/hygieia/hygieia-jenkins-build-collector.properties
