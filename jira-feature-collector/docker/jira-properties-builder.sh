@@ -16,7 +16,7 @@ if [ "$MONGO_PORT" != "" ]; then
 	MONGODB_HOST=`echo $MONGO_PORT|sed 's;.*://\([^:]*\):\(.*\);\1;'`
 	MONGODB_PORT=`echo $MONGO_PORT|sed 's;.*://\([^:]*\):\(.*\);\2;'`
 else
-	env 
+	env
 	echo "ERROR: MONGO_PORT not defined"
 	exit 1
 fi
@@ -79,9 +79,9 @@ feature.deltaCollectorItemStartDate=${JIRA_DELTA_COLLECTOR_ITEM_START_DATE:-2008
 feature.jiraBaseUrl=${JIRA_BASE_URL:-https://jira.atlassian.com}
 feature.jiraQueryEndpoint=${JIRA_QUERY_ENDPOINT:-rest/api/2/}
 
-#64-bit encoded credentials with the pattern username:password 
+#64-bit encoded credentials with the pattern username:password
 #on a mac you con create them with : echo "username:password" | base64
-#reference:  https://www.base64decode.org/ 
+#reference:  https://www.base64decode.org/
 feature.jiraCredentials=${JIRA_CREDENTIALS}
 
 #OAuth2.0 token credentials (currently not supported in this version)
@@ -127,6 +127,16 @@ feature.jiraEpicIdFieldName=${JIRA_EPIC_FIELD_NAME:-customfield_10400}
 # https://[your-jira-domain-name]/rest/api/2/issue/[some-issue-name]
 feature.jiraStoryPointsFieldName=${JIRA_STORY_POINTS_FIELD_NAME:-customfield_10002}
 
+#############################################################################
+# Internal Status Mappings - THESE SHOULD BE FILLED OUT FOR EVERY CUSTOM STATUS VALUE
+# IN YOUR JIRA INSTANCE
+#
+# Use the following API call to get all of your status mappings:  http://jira.your.instance.com/rest/api/2/status/
+#############################################################################
+feature.todoStatuses[0]=TO DO
+feature.doingStatuses[0]=In Progress
+feature.doneStatuses[0]=Done
+
 EOF
 
 echo "
@@ -135,4 +145,4 @@ Properties file created:  $PROP_FILE
 Note: passwords hidden
 ===========================================
 `cat $PROP_FILE |egrep -vi 'password|Credentials'`
-" 
+"
